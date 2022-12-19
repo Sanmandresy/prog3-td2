@@ -19,14 +19,14 @@ create table if not exists sponsor
     sponsor_name varchar not null
 );
 
-create table if not exists have_sponsor
+create table if not exists have
 (
-    id         serial
+    id      serial
         constraint have_sponsor_pk primary key,
-    team_id_spons    int not null,
-    constraint fk_have_sponsor_team foreign key (team_id_spons) references team (team_id),
-    spons_id int not null,
-    constraint fk_have_sponsor_sponsor foreign key (spons_id) references sponsor (sponsor_id)
+    team_id_sponsored    int not null,
+    constraint fk_have_sponsor_team foreign key (team_id_sponsored) references team (team_id),
+    sponsor_id int not null,
+    constraint fk_have_sponsor_sponsor foreign key (sponsor_id) references sponsor (sponsor_id)
 );
 
 create table if not exists play_against
