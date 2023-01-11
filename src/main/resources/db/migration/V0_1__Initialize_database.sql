@@ -40,3 +40,13 @@ create table if not exists play_against
     team_two int     not null,
     constraint fk_two foreign key (team_two) references team (team_id)
 );
+
+create table if not exists goal (
+    match_id serial primary key,
+    scored int not null,
+    constraint fk_scored foreign key (scored) references  player (player_id),
+    isAgainstOwn boolean not null,
+    minute int check(minute between 0 and 90)
+);
+
+alter table player add column is_goalkeeper boolean;
